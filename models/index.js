@@ -5,11 +5,11 @@ const MODELS = [
   'Category',
   'DetailImage',
   'Nutrients',
-  // 'Like',
-  // 'User',
-  // 'Order',
-  // 'OrderItem',
-  // 'OrderStatus',
+  'User',
+  'Order',
+  'OrderItem',
+  'OrderStatus',
+  'Like',
 ];
 
 const sequelizeModels = function (sequelize) {
@@ -31,4 +31,19 @@ model.Nutrients.belongsTo(model.Drink);
 model.Drink.belongsTo(model.Category);
 model.Category.hasMany(model.Drink);
 
-module.exports = { model, sequelize };
+model.User.hasMany(model.Order);
+model.Order.belongsTo(model.User);
+
+model.Order.hasMany(model.OrderItem);
+model.OrderItem.belongsTo(model.Order);
+
+model.OrderItem.belongsTo(model.OrderStatus);
+model.OrderStatus.hasMany(model.OrderItem);
+
+model.User.hasMany(model.Like);
+model.Like.belongsTo(model.User);
+
+model.Drink.hasMany(model.Like);
+model.Like.belongsTo(model.Drink);
+
+module.exports = { ...model, sequelize };

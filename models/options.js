@@ -11,6 +11,13 @@ const ATTRIBUTE_INT_OPTION = {
   defaultValue: 0,
 };
 
+const ATTRIBUTE_ID = {
+  type: DataTypes.INTEGER,
+  allowNull: false,
+  autoIncrement: true,
+  primaryKey: true,
+};
+
 const TABLE_OPTION = {
   freezeTableName: true,
   paranoid: true,
@@ -24,5 +31,6 @@ const TABLE_OPTION = {
 module.exports = {
   ATTRIBUTE_STRING_OPTION,
   ATTRIBUTE_INT_OPTION,
+  ATTRIBUTE_ID,
   TABLE_OPTION,
 };
